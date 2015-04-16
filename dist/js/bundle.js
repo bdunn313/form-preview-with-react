@@ -19731,6 +19731,9 @@ var React = require("react");
 var Form = React.createClass({
     displayName: "Form",
 
+    handleChange: function handleChange(e) {
+        this.props.updateValue(e.target.name, e.target.value);
+    },
     render: function render() {
         return React.createElement(
             "form",
@@ -19748,7 +19751,7 @@ var Form = React.createClass({
                     null,
                     "Title"
                 ),
-                React.createElement("input", { className: "form-control", type: "text", name: "title" })
+                React.createElement("input", { className: "form-control", type: "text", name: "title", value: this.props.title, ref: "title", onChange: this.handleChange })
             ),
             React.createElement(
                 "div",
@@ -19758,7 +19761,7 @@ var Form = React.createClass({
                     null,
                     "\"Read More\" Link"
                 ),
-                React.createElement("input", { className: "form-control", type: "url", name: "image" })
+                React.createElement("input", { className: "form-control", type: "url", name: "readmore_link" })
             ),
             React.createElement(
                 "div",
@@ -19807,12 +19810,28 @@ var Preview = require('./preview.jsx');
 var FormWrapper = React.createClass({
     displayName: 'FormWrapper',
 
+    getInitialState: function getInitialState() {
+        return {
+            title: '',
+            readmore_link: '',
+            image: '',
+            body: ''
+        };
+    },
+    updateValue: function updateValue(key, value) {
+        var newState = {};
+        newState[key] = value;
+        this.setState(newState);
+    },
     render: function render() {
         return React.createElement(
             'div',
             { className: 'row' },
-            React.createElement(Form, null),
-            React.createElement(Preview, null)
+            React.createElement(Form, {
+                title: this.state.title,
+                updateValue: this.updateValue }),
+            React.createElement(Preview, {
+                title: this.state.title })
         );
     }
 
