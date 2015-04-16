@@ -19751,7 +19751,7 @@ var Form = React.createClass({
                     null,
                     "Title"
                 ),
-                React.createElement("input", { className: "form-control", type: "text", name: "title", value: this.props.title, ref: "title", onChange: this.handleChange })
+                React.createElement("input", { className: "form-control", type: "text", name: "title", value: this.props.title, onChange: this.handleChange })
             ),
             React.createElement(
                 "div",
@@ -19761,7 +19761,7 @@ var Form = React.createClass({
                     null,
                     "\"Read More\" Link"
                 ),
-                React.createElement("input", { className: "form-control", type: "url", name: "readmore_link" })
+                React.createElement("input", { className: "form-control", type: "url", name: "readmore_link", value: this.props.readmore_link, onChange: this.handleChange })
             ),
             React.createElement(
                 "div",
@@ -19771,17 +19771,7 @@ var Form = React.createClass({
                     null,
                     "Image Url"
                 ),
-                React.createElement("input", { className: "form-control", type: "url", name: "image" })
-            ),
-            React.createElement(
-                "div",
-                { className: "form-group" },
-                React.createElement(
-                    "label",
-                    null,
-                    "Image Caption"
-                ),
-                React.createElement("input", { className: "form-control", type: "text", name: "caption" })
+                React.createElement("input", { className: "form-control", type: "url", name: "image", value: this.props.image, onChange: this.handleChange })
             ),
             React.createElement(
                 "div",
@@ -19791,7 +19781,12 @@ var Form = React.createClass({
                     null,
                     "Body"
                 ),
-                React.createElement("textarea", { className: "form-control", name: "body", rows: "7" })
+                React.createElement("textarea", { className: "form-control", name: "body", rows: "7", value: this.props.body, onChange: this.handleChange })
+            ),
+            React.createElement(
+                "button",
+                { className: "btn btn-primary", type: "submit" },
+                "Submit"
             )
         );
     }
@@ -19829,9 +19824,15 @@ var FormWrapper = React.createClass({
             { className: 'row' },
             React.createElement(Form, {
                 title: this.state.title,
+                body: this.state.body,
+                image: this.state.image,
+                readmore_link: this.state.readmore_link,
                 updateValue: this.updateValue }),
             React.createElement(Preview, {
-                title: this.state.title })
+                title: this.state.title,
+                body: this.state.body,
+                image: this.state.image,
+                readmore_link: this.state.readmore_link })
         );
     }
 
@@ -19850,7 +19851,7 @@ var Preview = React.createClass({
 
     render: function render() {
         var image = util.ifExists(this.props.image, 'http://placehold.it/900x300&text=Placeholder+Image'),
-            body = util.ifExists(this.props.body, 'Footage knife cardboard tower geodesic military-grade shrine market\n                                                    Kowloon Chiba. Math-claymore mine artisanal camera Shibuya vinyl crypto-media\n                                                    into concrete sprawl. Decay alcohol 8-bit euro-pop smart-urban claymore mine\n                                                    singularity courier. Sub-orbital claymore mine urban artisanal tiger-team dead\n                                                    nodality man sunglasses advert corporation monofilament apophenia faded franchise.\n                                                    Augmented reality crypto-media sentient wonton soup tanto artisanal film bicycle\n                                                    assassin spook fetishism neon nodality boat. '),
+            body = util.ifExists(this.props.body, 'Footage knife cardboard tower geodesic military-grade shrine market\n                                                    Kowloon Chiba. Math-claymore mine artisanal camera Shibuya vinyl crypto-media\n                                                    into concrete sprawl. Decay alcohol 8-bit euro-pop smart-urban claymore mine\n                                                    singularity courier. Sub-orbital claymore mine urban artisanal tiger-team dead\n                                                    nodality man sunglasses advert corporation monofilament apophenia faded franchise.\n                                                    Augmented reality crypto-media sentient wonton soup tanto artisanal film bicycle\n                                                    assassin spook fetishism neon nodality boat.'),
             title = util.ifExists(this.props.title, 'Title'),
             readmore_link = util.ifExists(this.props.readmore_link, 'http://google.com');
 

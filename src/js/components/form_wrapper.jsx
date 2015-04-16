@@ -21,9 +21,15 @@ var FormWrapper = React.createClass({
             <div className="row">
                 <Form
                     title={this.state.title}
+                    body={this.state.body}
+                    image={this.state.image}
+                    readmore_link={this.state.readmore_link}
                     updateValue={this.updateValue}/>
                 <Preview
-                    title={this.state.title}/>
+                    title={this.state.title}
+                    body={this.state.body}
+                    image={this.state.image}
+                    readmore_link={this.state.readmore_link}/>
             </div>
         );
     }

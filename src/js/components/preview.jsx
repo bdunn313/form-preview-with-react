@@ -11,7 +11,7 @@ var Preview = React.createClass({
                                                     singularity courier. Sub-orbital claymore mine urban artisanal tiger-team dead
                                                     nodality man sunglasses advert corporation monofilament apophenia faded franchise.
                                                     Augmented reality crypto-media sentient wonton soup tanto artisanal film bicycle
-                                                    assassin spook fetishism neon nodality boat. `),
+                                                    assassin spook fetishism neon nodality boat.`),
             title = util.ifExists(this.props.title, 'Title'),
             readmore_link = util.ifExists(this.props.readmore_link, 'http://google.com');
 
