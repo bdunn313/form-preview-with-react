@@ -1,4 +1,4 @@
 var React   = require('react');
-var Example = require('./components/example.jsx');
+var FormWrapper = require('./components/form_wrapper.jsx');
 
-React.render(<Example/>, document.getElementById('main'));
+React.render(<FormWrapper/>, document.getElementById('main'));

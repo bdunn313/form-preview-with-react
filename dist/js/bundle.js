@@ -2,11 +2,11 @@
 'use strict';
 
 var React = require('react');
-var Example = require('./components/example.jsx');
+var FormWrapper = require('./components/form_wrapper.jsx');
 
-React.render(React.createElement(Example, null), document.getElementById('main'));
+React.render(React.createElement(FormWrapper, null), document.getElementById('main'));
 
-},{"./components/example.jsx":158,"react":157}],2:[function(require,module,exports){
+},{"./components/form_wrapper.jsx":159,"react":157}],2:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -19728,19 +19728,152 @@ module.exports = require('./lib/React');
 
 var React = require("react");
 
-var Example = React.createClass({
-    displayName: "Example",
+var Form = React.createClass({
+    displayName: "Form",
 
     render: function render() {
         return React.createElement(
-            "h1",
-            { className: "page-header" },
-            "This is an example react component."
+            "form",
+            { className: "col-md-6" },
+            React.createElement(
+                "h1",
+                { className: "page-header" },
+                "Form"
+            ),
+            React.createElement(
+                "div",
+                { className: "form-group" },
+                React.createElement(
+                    "label",
+                    null,
+                    "Title"
+                ),
+                React.createElement("input", { className: "form-control", type: "text", name: "title" })
+            ),
+            React.createElement(
+                "div",
+                { className: "form-group" },
+                React.createElement(
+                    "label",
+                    null,
+                    "\"Read More\" Link"
+                ),
+                React.createElement("input", { className: "form-control", type: "url", name: "image" })
+            ),
+            React.createElement(
+                "div",
+                { className: "form-group" },
+                React.createElement(
+                    "label",
+                    null,
+                    "Image Url"
+                ),
+                React.createElement("input", { className: "form-control", type: "url", name: "image" })
+            ),
+            React.createElement(
+                "div",
+                { className: "form-group" },
+                React.createElement(
+                    "label",
+                    null,
+                    "Image Caption"
+                ),
+                React.createElement("input", { className: "form-control", type: "text", name: "caption" })
+            ),
+            React.createElement(
+                "div",
+                { className: "form-group" },
+                React.createElement(
+                    "label",
+                    null,
+                    "Body"
+                ),
+                React.createElement("textarea", { className: "form-control", name: "body", rows: "7" })
+            )
         );
     }
 
 });
 
-module.exports = Example;
+module.exports = Form;
+
+},{"react":157}],159:[function(require,module,exports){
+'use strict';
+
+var React = require('react');
+var Form = require('./form.jsx');
+var Preview = require('./preview.jsx');
+
+var FormWrapper = React.createClass({
+    displayName: 'FormWrapper',
+
+    render: function render() {
+        return React.createElement(
+            'div',
+            { className: 'row' },
+            React.createElement(Form, null),
+            React.createElement(Preview, null)
+        );
+    }
+
+});
+
+module.exports = FormWrapper;
+
+},{"./form.jsx":158,"./preview.jsx":160,"react":157}],160:[function(require,module,exports){
+"use strict";
+
+var React = require("react");
+
+var Preview = React.createClass({
+    displayName: "Preview",
+
+    render: function render() {
+        return React.createElement(
+            "div",
+            { className: "col-md-6" },
+            React.createElement(
+                "h1",
+                { className: "page-header" },
+                "Preview"
+            ),
+            React.createElement(
+                "div",
+                { className: "panel panel-default" },
+                React.createElement(
+                    "div",
+                    { className: "panel-heading" },
+                    React.createElement(
+                        "h1",
+                        { className: "panel-title" },
+                        "Title"
+                    )
+                ),
+                React.createElement("img", { src: "http://placehold.it/900x300&text=Placeholder+Image", className: "img-responsive" }),
+                React.createElement(
+                    "div",
+                    { className: "panel-body" },
+                    React.createElement(
+                        "p",
+                        null,
+                        "Smart-engine alcohol nodal point urban shanty town warehouse ablative. Geodesic Shibuya industrial grade apophenia A.I. kanji crypto-wonton soup singularity soul-delay assassin nodal point franchise Legba receding rebar. Vehicle warehouse Chiba RAF 3D-printed free-market otaku construct tiger-team realism tanto jeans cyber. Semiotics knife Legba towards vehicle franchise modem sensory otaku free-market long-chain hydrocarbons. Systemic jeans range-rover rebar concrete RAF crypto. Dolphin 8-bit construct skyscraper media j-pop shrine neon free-market-ware youtube savant augmented reality dissident."
+                    ),
+                    React.createElement(
+                        "p",
+                        null,
+                        React.createElement(
+                            "a",
+                            { className: "btn btn-danger btn-preview-read-more", href: "#", target: "_blank" },
+                            "Read More"
+                        )
+                    )
+                )
+            )
+        );
+    }
+
+});
+
+module.exports = Preview;
 
 },{"react":157}]},{},[1]);
