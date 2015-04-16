@@ -19821,50 +19821,56 @@ var FormWrapper = React.createClass({
 module.exports = FormWrapper;
 
 },{"./form.jsx":158,"./preview.jsx":160,"react":157}],160:[function(require,module,exports){
-"use strict";
+'use strict';
 
-var React = require("react");
+var React = require('react');
+var util = require('../utilities.js');
 
 var Preview = React.createClass({
-    displayName: "Preview",
+    displayName: 'Preview',
 
     render: function render() {
+        var image = util.ifExists(this.props.image, 'http://placehold.it/900x300&text=Placeholder+Image'),
+            body = util.ifExists(this.props.body, 'Footage knife cardboard tower geodesic military-grade shrine market\n                                                    Kowloon Chiba. Math-claymore mine artisanal camera Shibuya vinyl crypto-media\n                                                    into concrete sprawl. Decay alcohol 8-bit euro-pop smart-urban claymore mine\n                                                    singularity courier. Sub-orbital claymore mine urban artisanal tiger-team dead\n                                                    nodality man sunglasses advert corporation monofilament apophenia faded franchise.\n                                                    Augmented reality crypto-media sentient wonton soup tanto artisanal film bicycle\n                                                    assassin spook fetishism neon nodality boat. '),
+            title = util.ifExists(this.props.title, 'Title'),
+            readmore_link = util.ifExists(this.props.readmore_link, 'http://google.com');
+
         return React.createElement(
-            "div",
-            { className: "col-md-6" },
+            'div',
+            { className: 'col-md-6' },
             React.createElement(
-                "h1",
-                { className: "page-header" },
-                "Preview"
+                'h1',
+                { className: 'page-header' },
+                'Preview'
             ),
             React.createElement(
-                "div",
-                { className: "panel panel-default" },
+                'div',
+                { className: 'panel panel-default' },
                 React.createElement(
-                    "div",
-                    { className: "panel-heading" },
+                    'div',
+                    { className: 'panel-heading' },
                     React.createElement(
-                        "h1",
-                        { className: "panel-title" },
-                        "Title"
+                        'h1',
+                        { className: 'panel-title' },
+                        title
                     )
                 ),
-                React.createElement("img", { src: "http://placehold.it/900x300&text=Placeholder+Image", className: "img-responsive" }),
+                React.createElement('img', { src: image, className: 'img-responsive' }),
                 React.createElement(
-                    "div",
-                    { className: "panel-body" },
+                    'div',
+                    { className: 'panel-body' },
                     React.createElement(
-                        "p",
+                        'p',
                         null,
-                        "Smart-engine alcohol nodal point urban shanty town warehouse ablative. Geodesic Shibuya industrial grade apophenia A.I. kanji crypto-wonton soup singularity soul-delay assassin nodal point franchise Legba receding rebar. Vehicle warehouse Chiba RAF 3D-printed free-market otaku construct tiger-team realism tanto jeans cyber. Semiotics knife Legba towards vehicle franchise modem sensory otaku free-market long-chain hydrocarbons. Systemic jeans range-rover rebar concrete RAF crypto. Dolphin 8-bit construct skyscraper media j-pop shrine neon free-market-ware youtube savant augmented reality dissident."
+                        body
                     ),
                     React.createElement(
-                        "p",
+                        'p',
                         null,
                         React.createElement(
-                            "a",
-                            { className: "btn btn-danger btn-preview-read-more", href: "#", target: "_blank" },
-                            "Read More"
+                            'a',
+                            { className: 'btn btn-danger btn-preview-read-more', href: readmore_link, target: '_blank' },
+                            'Read More'
                         )
                     )
                 )
@@ -19876,4 +19882,17 @@ var Preview = React.createClass({
 
 module.exports = Preview;
 
-},{"react":157}]},{},[1]);
+},{"../utilities.js":161,"react":157}],161:[function(require,module,exports){
+"use strict";
+
+var _exports = {};
+
+_exports.ifExists = function (value) {
+    var fallback = arguments[1] === undefined ? undefined : arguments[1];
+
+    return value ? value : fallback;
+};
+
+module.exports = _exports;
+
+},{}]},{},[1]);
